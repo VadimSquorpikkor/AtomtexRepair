@@ -147,102 +147,24 @@ let dEventConverter = {
 
 //**********************************************************************************************************************
 
-/** Загрузка всех юнитов из БД */
-function getAllSerialUnits() {
-    getAllByOneParam(DBASE, TABLE_UNITS, dUnitConverter, UNIT_TYPE, SERIAL_TYPE, addSerialDataRowToPage);
-}
-
-/** Загрузка всех ремонтных юнитов из БД */
-function getAllRepairUnits() {
-    getAllByOneParam(DBASE, TABLE_UNITS, dUnitConverter, UNIT_TYPE, REPAIR_TYPE, addRepairDataRowToPage);
-}
-
-/**Обертка*/
-function getAllUnitsByOneParam(type, param, value, func) {
-    getAllByTwoParam(DBASE, TABLE_UNITS, dUnitConverter, UNIT_TYPE, type, param, value, func);
-}
-
-/**Обертка*/
-function getAllUnitsByTwoParam(type, param, value, param2, value2, func) {
-    getAllByThreeParam(DBASE, TABLE_UNITS, dUnitConverter, UNIT_TYPE, type, param, value, param2, value2, func);
-}
-
 function startSearchAllRepairOnly(serial_id) {
     let serial = valueOfElement(serial_id);
-    if (serial!=="") getUnitListFromBD(ANY_VALUE, ANY_VALUE, ANY_VALUE, TYPE_REPAIR, ANY_VALUE, serial);
+    if (serial==="") insertNothing('row_table');
+    else getUnitListFromBD(serial);
 }
 
-function startSearch(devName_id, location_id, state_id, employee_id, serial_id, serial_radio_id) {
-    let deviceName = getValueFromSpinner(devName_id);
-    let location = getValueFromSpinner(location_id);
-    let state = getValueFromSpinner(state_id);
-    let employee = getValueFromSpinner(employee_id);
-    let serial = valueOfElement(serial_id);
-    let type = document.getElementById(serial_radio_id).checked?TYPE_SERIAL:TYPE_REPAIR;
+function getUnitListFromBD(serial) {
 
-    console.log("name="+deviceName+" loc="+location+" state="+state+" empl="+employee+" serial="+serial+" type="+type);
-
-    if (deviceName === ALL_DEVICES) deviceName = ANY_VALUE;
-    if (location === ALL_LOCATIONS) location = ANY_VALUE;
-    if (state === ALL_STATES) state = ANY_VALUE;
-    if (employee === ALL_EMPLOYEES) employee = ANY_VALUE;
-
-    if (serial === "") getUnitListFromBD(deviceName, location, employee, type, state, ANY_VALUE);
-    else getUnitListFromBD(ANY_VALUE, ANY_VALUE, ANY_VALUE, ANY_VALUE, ANY_VALUE, serial);
-
+    getAllUnitsByParam(DBASE, TABLE_UNITS, dUnitConverter,
+        UNIT_DEVICE, ANY_VALUE,
+        UNIT_LOCATION, ANY_VALUE,
+        UNIT_EMPLOYEE, ANY_VALUE,
+        UNIT_TYPE, TYPE_REPAIR,
+        UNIT_STATE, ANY_VALUE,
+        UNIT_SERIAL, serial,
+        addSerialDataRowToPage);
 }
 
-/**По выбранным параметрам получает из БД список юнитов*/
-function getUnitListFromBD(deviceName, location, employee, type, state, serial) {
-    //Если параметр не "any", то имя параметра переводим в его идентификатор ("Диагностика" -> "adj_r_diagnostica")
-    //Если "any", то так и оставляем
-    if (deviceName !== ANY_VALUE) deviceName = getIdByName(deviceName, deviceNameList, deviceIdList);
-    if (location !== ANY_VALUE) location = getIdByName(location, locationNameList, locationIdList);
-    if (state !== ANY_VALUE) state = getIdByName(state, stateNameList, stateIdList);
-    if (employee !== ANY_VALUE) employee = getIdByName(employee, employeeNameList, employeeIdList);
-
-    console.log("name="+deviceName+" loc="+location+" state="+state+" empl="+employee+" serial="+serial+" type="+type);
-
-    getAllUnitsByParam(DBASE, TABLE_UNITS, dUnitConverter, UNIT_DEVICE, deviceName, UNIT_LOCATION, location, UNIT_EMPLOYEE, employee, UNIT_TYPE, type, UNIT_STATE, state, UNIT_SERIAL, serial, addSerialDataRowToPage);
-}
-
-
-function getAllRepairUnitsByParam(sp_name, sp_state) {
-    let name = getValueFromSpinner(sp_name);
-    let state = getValueFromSpinner(sp_state);
-    console.log(name+" "+state);
-    if (name === ALL_DEVICES && state === ALL_STATES) {
-        getAllRepairUnits();
-    } else if (name === ALL_DEVICES) {
-        getAllUnitsByOneParam(REPAIR_TYPE, UNIT_STATE, state, addRepairDataRowToPage);
-    } else if (state === ALL_STATES) {
-        getAllUnitsByOneParam(REPAIR_TYPE, UNIT_DEVICE, name, addRepairDataRowToPage);
-    } else {
-        getAllUnitsByTwoParam(REPAIR_TYPE, UNIT_DEVICE, name, UNIT_STATE, state, addRepairDataRowToPage);
-    }
-}
-
-
-/**Обертка для getRepairUnitByNameAndSerial. Получает на вход ID элементов, берет из них данные и вызывает
- * getRepairUnitByNameAndSerial используя эти данные */
-function getRepairUnit(nameId, serialId) {
-    let name = getValueFromSpinner(nameId);
-    let serial = document.getElementById(serialId).value;
-    getRepairUnitByNameAndSerial(name, serial);
-}
-
-/**По имени и серийному номеру ремонтного прибора получает список событий (статусов) этого прибора и формирует из этих
- * данных DIV с таблицей статусов */
-function getRepairUnitByNameAndSerial(name, serial) {
-    getAllUnitsByTwoParam(REPAIR_TYPE, UNIT_DEVICE, name, UNIT_SERIAL, serial, function (arr) {
-        if (arr.length === 0) insertNothing('repair_search_result');
-        else {
-            let dUnit = arr[0];
-            // getAllByOneParamOrdered(DBASE, TABLE_EVENTS, dEventConverter, EVENT_UNIT, dUnit.id, addCollectionOfDocumentToDiv, dUnit, EVENT_DATE);
-            getAllEventsByUnitId(DBASE, TABLE_EVENTS, EVENT_UNIT, dUnit.id, addCollectionOfDocumentToDiv, dUnit, EVENT_DATE);
-        }
-    });
-}
 
 /**Показывает/скрывает список всех событий для выбранного юнита*/
 function getAllEventsByUnitIdSmall(unit_id) {
