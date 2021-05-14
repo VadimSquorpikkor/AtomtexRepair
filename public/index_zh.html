@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
+<html lang="zh">
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Atomtex Repair</title>
+    <title>修理</title>
 
     <script defer src="/__/firebase/8.5.0/firebase-app.js"></script>
     <script defer src="/__/firebase/8.5.0/firebase-firestore.js"></script>
@@ -24,36 +24,31 @@
     <script defer src="js/firebase_low_level.js"></script>
     <script defer src="js/listeners.js"></script>
 
-  </head>
-  <body class="body">
+</head>
+<body class="body">
 
-  <a id="output_a"></a>
+<a id="output_a"></a>
 
-  <div class="main_div" id="main_div">
+<div class="main_div" id="main_div">
 
-<!--    <input type="image" src="flags/en.jpg" name="En" onclick="location.href='index.html'" width="60" height="30"/>-->
+    <input type="image" src="flags/en.jpg" name="En" onclick="location.href='index.html'" width="60" height="30"/>
     <input type="image" src="flags/ru.jpg" name="En" onclick="location.href='index_ru.html'" width="60" height="30"/>
-    <input type="image" src="flags/zh.jpg" name="En" onclick="location.href='index_zh.html'" width="60" height="30"/>
+<!--    <input type="image" src="flags/zh.jpg" name="En" onclick="location.href='index_zh.html'" width="60" height="30"/>-->
     <input type="image" src="flags/it.jpg" name="En" onclick="location.href='index_it.html'" width="60" height="30"/>
 
-<!--    <img src="flags/en.jpg" width="60" height="30">-->
-<!--    <img src="flags/ru.jpg" width="60" height="30">-->
-<!--    <img src="flags/zh.jpg" width="60" height="30">-->
-<!--    <img src="flags/it.jpg" width="60" height="30">-->
-
-    <h1>AtomtexRepair</h1>
+    <h1>ATOMTEX 修理</h1>
 
     <div class="search_filter_div">
-      <span class="label_filter">Serial number: </span>
-      <input type="text" placeholder="Serial number" id="serial" style="width:150px; margin-bottom: 4px"><br>
-      <input type="button" onclick="startSearchAllRepairOnly('serial')" style="width:100px" value="Search">
+        <span class="label_filter">序列号: </span>
+        <input type="text" placeholder="序列号" id="serial" style="width:150px; margin-bottom: 4px"><br>
+        <input type="button" onclick="startSearchAllRepairOnly('serial')" style="width:100px" value="搜索">
     </div>
 
     <div class="main_div" id="row_table" style="box-shadow: none; padding-top: 0px"></div>
 
     <img id="main_logo" src="logo_big_grayscale.png" width="400px" style="margin: auto"><br>
 
-    <span class="version">Version — 1.02 </span>
-  </div>
-  </body>
+    <span class="version">版本 — 1.02 </span>
+</div>
+</body>
 </html>

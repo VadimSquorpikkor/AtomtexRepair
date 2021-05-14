@@ -17,6 +17,18 @@ function listen(database, table, func) {
         });
 }
 
+function listenLang(database, table, language, func) {
+    database.collection(table)
+        .onSnapshot((snapshot) => {
+            snapshot.docChanges().forEach((change) => {
+                console.log(change.doc.data());
+                getPairedCollectionFromDB(table, function (arr_id, arr_name) {
+                    func(arr_name, arr_id); //Эта функция
+                });
+            });
+        });
+}
+
 function getAllEventsByUnitId_new(database, table, param, value, func, orderBy, order, host){
     let arr = [];
     database.collection(table)
@@ -70,11 +82,29 @@ function getPairedCollectionFromDB(table, func) {
         .get().then((querySnapshot) => {
         querySnapshot.forEach((doc) => {
             arr_id.push(doc.data().id);
-            arr_name.push(doc.data().name);
+            if (language === LANG_RUSSIAN) arr_name.push(doc.data().name_ru);
+            else if (language === LANG_ENGLISH) arr_name.push(doc.data().name_en);
+            else if (language === LANG_CHINESE) arr_name.push(doc.data().name_zh);
+            else if (language === LANG_ITALIAN) arr_name.push(doc.data().name_it);
+            else arr_name.push(doc.data().name_en);
+            // arr_name.push(doc.data().name);
         });
         func(arr_id, arr_name);
     });
 }
+
+/*function getPairedCollectionFromDBLang(table, language, func) {
+    let arr_id = [];
+    let arr_name = [];
+    DBASE.collection(table)
+        .get().then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+            arr_id.push(doc.data().id);
+            if (language === LANG_RUSSIAN) arr_name.push(doc.data().name);
+        });
+        func(arr_id, arr_name);
+    });
+}*/
 
 function valueOf(id) {
     return document.getElementById(id).value

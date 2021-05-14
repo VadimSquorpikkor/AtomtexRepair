@@ -58,6 +58,13 @@ const ANY_VALUE = "any_value";
 const STATE_PREF = "state_";
 const DESCENDING = "desc";
 
+const LANG_RUSSIAN = "russian";
+const LANG_ENGLISH = "english";
+const LANG_CHINESE = "chinese";
+const LANG_ITALIAN = "italian";
+
+let language = getLanguage(document.documentElement.lang);
+
 /** Класс для устройства, или блока детектирования */
 class DUnit {
     constructor(id, description, device_id, employee_id, inner_serial, location_id, serial, state_id, type_id, date) {
@@ -174,6 +181,13 @@ function getAllEventsByUnitIdSmall(unit_id) {
     //если список событий не показан, то показать, если уже показывается (size!==0), то очищаем (удаляем) список
     if (size === 0) getAllEventsByUnitId_new(DBASE, TABLE_EVENTS, EVENT_UNIT, unit_id, addCollectionOfDocumentToDiv_new, EVENT_DATE, DESCENDING, host);
     else document.getElementById(host).innerHTML = '';
+}
 
-
+function getLanguage(pageLang) {
+    switch (pageLang) {
+        case "ru":return LANG_RUSSIAN;
+        case "en":return LANG_ENGLISH;
+        case "zh":return LANG_CHINESE;
+        case "it":return LANG_ITALIAN;
+    }
 }

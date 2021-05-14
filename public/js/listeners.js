@@ -1,6 +1,8 @@
 
 const EMPTY_VALUE = "- - -";
 
+
+
 function getIdByName(name, nameList, idList) {
     let position = nameList.indexOf(name);
     if (position===-1) return EMPTY_VALUE;
