@@ -194,7 +194,7 @@ input[type="button"]:active {
 
 .day_count_div {
     float: right;
-    margin-top: 10px;
+    /*margin-top: 10px;*/
     text-align: center;
 }
 
@@ -217,7 +217,8 @@ input[type="button"]:active {
     color: darkorange;
     text-shadow: 2px 2px 2px #444444;
     max-width: 700px;
-    padding: 4px 12px 4px 12px;
+    /*padding: 4px 12px 4px 12px;*/
+    padding: 12px;
     margin: 2px auto;
     text-align: center;
     overflow:auto;
