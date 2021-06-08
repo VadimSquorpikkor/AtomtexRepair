@@ -2,32 +2,25 @@
  * Методы ничего не знают про приложение, не знают как называется БД и из каких таблиц (коллекций) состоит. Само приложение не в курсе, как работать с БД,
  * общается через firebaseHelper. Полная инкапсуляция. */
 
-/**Лисенер для коллекции БД. Суть такого лисенера: следит за изменениями в коллекции, при ивенте загружает из коллекции
- * список всех имен и список всех идентификаторов. Оба списка передает через "этой функции", которая уже занимается
- * сохранением списков и формированием из них спинеров*/
-function listen(database, table, func) {
-    database.collection(table)
-        .onSnapshot((snapshot) => {
-            snapshot.docChanges().forEach((change) => {
-                console.log(change.doc.data());
-                getPairedCollectionFromDB(table, function (arr_id, arr_name) {
-                    func(arr_name, arr_id); //Эта функция
-                });
-            });
+
+
+
+//-------------------------------------------------------------------------------
+
+function getUnitBySerial(database, table, converter, param, value, func) {
+    let query = database.collection(table).withConverter(converter).where(param, "==", value);
+
+    let arr = [];
+    query.get().then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+            // Convert to object
+            obj = doc.data();
+            arr.push(obj);
         });
+        func(arr);
+    });
 }
 
-function listenLang(database, table, language, func) {
-    database.collection(table)
-        .onSnapshot((snapshot) => {
-            snapshot.docChanges().forEach((change) => {
-                console.log(change.doc.data());
-                getPairedCollectionFromDB(table, function (arr_id, arr_name) {
-                    func(arr_name, arr_id); //Эта функция
-                });
-            });
-        });
-}
 
 function getAllEventsByUnitId_new(database, table, param, value, func, orderBy, order, host){
     let arr = [];
@@ -75,36 +68,6 @@ function getAllUnitsByParam(database, table, converter,
 }
 
 
-function getPairedCollectionFromDB(table, func) {
-    let arr_id = [];
-    let arr_name = [];
-    DBASE.collection(table)
-        .get().then((querySnapshot) => {
-        querySnapshot.forEach((doc) => {
-            arr_id.push(doc.data().id);
-            if (language === LANG_RUSSIAN) arr_name.push(doc.data().name_ru);
-            else if (language === LANG_ENGLISH) arr_name.push(doc.data().name_en);
-            else if (language === LANG_CHINESE) arr_name.push(doc.data().name_zh);
-            else if (language === LANG_ITALIAN) arr_name.push(doc.data().name_it);
-            else arr_name.push(doc.data().name_en);
-            // arr_name.push(doc.data().name);
-        });
-        func(arr_id, arr_name);
-    });
-}
-
-/*function getPairedCollectionFromDBLang(table, language, func) {
-    let arr_id = [];
-    let arr_name = [];
-    DBASE.collection(table)
-        .get().then((querySnapshot) => {
-        querySnapshot.forEach((doc) => {
-            arr_id.push(doc.data().id);
-            if (language === LANG_RUSSIAN) arr_name.push(doc.data().name);
-        });
-        func(arr_id, arr_name);
-    });
-}*/
 
 function valueOf(id) {
     return document.getElementById(id).value
