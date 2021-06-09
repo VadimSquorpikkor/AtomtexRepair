@@ -1,4 +1,6 @@
 
+const VERSION_NUMBER = 1.05;
+
 function valueOfElement(id) {
     return document.getElementById(id).value
 }
@@ -14,20 +16,51 @@ function rightDayString(i) {
     }
 }
 
+const flag_en = document.getElementById('flag_en');
+const flag_de = document.getElementById('flag_de');
+const flag_fr = document.getElementById('flag_fr');
+const flag_ru = document.getElementById('flag_ru');
+const flag_it = document.getElementById('flag_it');
+const flag_es = document.getElementById('flag_es');
 
-function insertTextToViewElements(id, name_id) {
-    document.getElementById(id).innerText = getRightLanguageWord(name_id);
-}
-function insertPlaceholderToViewElements(id, name_id) {
-    document.getElementById(id).placeholder = getRightLanguageWord(name_id);
-}
-function insertValueToViewElements(id, name_id) {
-    document.getElementById(id).value = getRightLanguageWord(name_id);
-}
+const serial_doted_text = document.getElementById('serial_number_text');
+const version_text = document.getElementById('version_text');
+const serial_input = document.getElementById('serial');
+const find_num_button = document.getElementById('search_button');
+const main_h1 = document.getElementById('main_h1');
 
-insertTextToViewElements('serial_number_text', 'serial_number_text');
-insertPlaceholderToViewElements('serial', 'serial_number');
-insertValueToViewElements('search_button', 'find_number');
+serial_doted_text.innerText = getRightLanguageWord('serial_number_text');
+version_text.innerText = getRightLanguageWord('version_text')+VERSION_NUMBER;
+main_h1.innerText = getRightLanguageWord('Repair Service');
+serial_input.placeholder = getRightLanguageWord('serial_number');
+find_num_button.value = getRightLanguageWord('find_number');
+
+
+flag_en.addEventListener('click', function (){
+    saveLanguage(LANG_ENGLISH);
+    location.reload();
+});
+flag_de.addEventListener('click', function (){
+    saveLanguage(LANG_GERMANY);
+    location.reload();
+});
+flag_fr.addEventListener('click', function (){
+    saveLanguage(LANG_FRENCH);
+    location.reload();
+});
+flag_ru.addEventListener('click', function (){
+    saveLanguage(LANG_RUSSIAN);
+    location.reload();
+});
+flag_it.addEventListener('click', function (){
+    saveLanguage(LANG_ITALIAN);
+    location.reload();
+    // return false;
+});
+flag_es.addEventListener('click', function (){
+    saveLanguage(LANG_SPANISH);
+    location.reload();
+});
 
 function addSerialDataRowToPage(arr) {
     if (arr.length === 0) insertNothing('row_table');

@@ -18,27 +18,24 @@
 
   </head>
 
-<!--  Почему для каждого языка отдельная страница: так пользователь сможет оставить у себя в закладках страницу с выбранным языком.
-    С другой стороны можно заморочиться с cookie и у пользователя будет открываться выбранная ранее версия языка. Надо подумать  -->
-
   <body class="body">
 
   <a id="output_a"></a>
 
   <div class="main_div" id="main_div">
 
-    <input type="image" src="flags/en.jpg" name="En" onclick="location.href='index.html'" width="60" height="30"/>
-    <input type="image" src="flags/de.jpg" name="De" onclick="location.href='index_de.html'" width="40" height="20"/>
-    <input type="image" src="flags/fr.jpg" name="Fr" onclick="location.href='index_fr.html'" width="40" height="20"/>
-    <input type="image" src="flags/ru.jpg" name="Ru" onclick="location.href='index_ru.html'" width="40" height="20"/>
-<!--    <input type="image" src="flags/zh.jpg" name="En" onclick="location.href='index_zh.html'" width="40" height="20"/>-->
-    <input type="image" src="flags/it.jpg" name="It" onclick="location.href='index_it.html'" width="40" height="20"/>
+    <input type="image" src="flags/en.jpg" id="flag_en" name="En" width="40" height="20"/>
+    <input type="image" src="flags/de.jpg" id="flag_de" name="De" width="40" height="20"/>
+    <input type="image" src="flags/fr.jpg" id="flag_fr" name="Fr" width="40" height="20"/>
+    <input type="image" src="flags/ru.jpg" id="flag_ru" name="Ru" width="40" height="20"/>
+    <input type="image" src="flags/it.jpg" id="flag_it" name="It" width="40" height="20"/>
+    <input type="image" src="flags/es.jpg" id="flag_es" name="Es" width="40" height="20"/>
 
-    <h1>AtomtexRepair</h1>
+    <h1 id="main_h1"></h1>
 
     <div class="search_filter_div">
       <span class="label_filter" id="serial_number_text"></span>
-      <input type="text" placeholder="Serial number" id="serial" style="width:150px; margin-bottom: 4px"><br>
+      <input type="text"id="serial" style="width:150px; margin-bottom: 4px"><br>
       <input type="button" id="search_button" onclick="startSearchAllRepairOnly('serial')" style="width:100px" value="Search">
     </div>
 
@@ -46,7 +43,9 @@
 
     <img id="main_logo" src="logo_big_grayscale.png" width="400px" style="margin: auto"><br>
 
-    <span class="version">Version — 1.04 </span>
+    <span id="version_text" class="version"></span>
   </div>
   </body>
+
+
 </html>
