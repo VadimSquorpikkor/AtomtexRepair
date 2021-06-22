@@ -63,7 +63,7 @@ let dictionary = new Map();
  dictionary.set('serial_number_prefix', {en:'S/N',                 fr:'N',                       de:'ON',                             it:'N',                            ru: '№',                  es:'N'});
  dictionary.set('sol_a_montag',         {en:'Soldering',           fr:'Soudure',                 de:'Löten',                          it:'Saldatura',                    ru: 'Монтаж',              es:'Soldadura'});
  dictionary.set('soldering',            {en:'Soldering',           fr:'Soudure',                 de:'Löten',                          it:'Saldatura',                    ru: 'Монтаж',              es:'Soldadura'});
- dictionary.set('rep_r_vydano',         {en:'Issued',              fr:'Publié',                  de:'Problematisch',                  it:'Rilasciato',                   ru: 'Выдано',              es:'Emitido'});
+ dictionary.set('rep_r_vydano',         {en:'Issued',              fr:'Délivré',                  de:'Ausgestellt',                  it:'Rilasciato',                   ru: 'Выдано',              es:'Emitido'});
  dictionary.set('rep_r_otpravleno',     {en:'Shipped',             fr:'Expédié',                 de:'Versand',                        it:'Spedito',                      ru: 'Отправлено',          es:'Enviado'});
  dictionary.set('rep_r_ozidanie',       {en:'Waiting for payment', fr:'En attente de paiement',  de:'Warten auf Zahlung',             it:'In attesa del pagamento',      ru: 'Ожидание оплаты',     es:'A la espera del pago'});
 

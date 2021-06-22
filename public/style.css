@@ -1,12 +1,34 @@
 
+.theme-light {
+    --main_div_background: #eeeeee;
+    --unit_background: #8fa7d7;
+    --state_background: #596ea0;/*#b6caff*/
+    --body_background: #cccccc;
+    --font_color: #4e5fb4;
+    --font_big_text: #ffffff;
+    --font_small_text: #d8eeff;
+    --font_search_text: #d8eeff;
+}
+
+.theme-dark {
+    --main_div_background: #555555;
+    --unit_background: #666666;
+    --state_background: #777777;
+    --body_background: #444444;
+    --font_color: darkorange;
+    --font_big_text: orange;
+    --font_small_text: #ECEFF1;
+    --font_search_text: darkorange;
+}
+
 .body {
     font-family: Arial;
     text-align: center;
-    background-color: #444444;
+    background-color: var(--body_background);
 }
 
 .main_div {
-    background-color: #555555;
+    background-color: var(--main_div_background);
     max-width: 1000px;
     /*margin: auto;*/
     box-shadow: 2px 1px 12px 1px rgba(0, 0, 0, 0.23);
@@ -20,31 +42,8 @@
     color: #ECEFF1;
 }
 
-.row_table {
-    background-color: #444444;
-    /*margin-left: 0px;*/
-    margin: auto;
-    margin-top: 20px;
-    /*margin-right: auto;*/
-    box-shadow: 1px 1px 8px 1px rgba(0, 0, 0, 0.23);
-    padding: 2px;
-}
 
-.row_table tr {
-
-}
-
-.row_table td {
-    /*background: darkseagreen;*/
-    background: #666666;
-    /*background: #919191;*/
-    /*background: grey;*/
-    color: #ECEFF1;
-    /*color: darkorange;*/
-    width: 150px;
-}
-
-.states {
+/*.states {
     background: #444444;
     margin-left: 100px;+/
     text-align: end;
@@ -52,20 +51,20 @@
     margin-right: 0px;
     padding: 3px;
     color: #ECEFF1;
-}
+}*/
 
-.selected {
+/*.selected {
     background: darkorange;
-}
+}*/
 
-.row_table th {
-    /*background: #039be5;*/
+/*.row_table th {
+    !*background: #039be5;*!
     background: darkorange;
     color: #ECEFF1;
-}
+}*/
 
 h1, h3 {
-    color: darkorange;
+    color: var(--font_color);
     text-shadow: 2px 3px 2px #444444;
 }
 
@@ -86,7 +85,7 @@ h1, h3 {
 }
 
 a {
-    color: darkorange;
+    color: var(--font_color);
     font-size: 18px;
     font-family: sans-serif;
     text-decoration: none;
@@ -97,7 +96,7 @@ a {
 
 a:hover {
     color: white;
-    background-color: darkorange;
+    background-color: var(--font_color);;
     border-radius: 9px;
     padding: 2px 4px;
     transition-property: all;
@@ -119,7 +118,7 @@ input[type="number"] {
 input[type="radio"] {
     font-family: "Trebuchet MS", sans-serif;
     font-size: 16px;
-    color: darkorange;
+    color: var(--font_color);
     border: 0;
     border-radius: 6px;
     box-shadow: inset 5px 10px 5px -9px rgba(0, 0, 0, 0.55);
@@ -165,7 +164,7 @@ input[type="button"]:active {
 
 .found_unit_item {
     /*background-color: #f57506;*/
-    background: #666666;
+    background: var(--unit_background);
     box-shadow: 2px 3px 5px 0 rgba(0, 0, 0, 0.55);
     border-radius: 5px;
     font-size: 14px;
@@ -176,20 +175,20 @@ input[type="button"]:active {
     overflow:auto;
 }
 
-.middle_white {
+/*.middle_white {
     font-size: 16px;
-    color: #ECEFF1;
-}
+    color: var(--font_middle_text);
+}*/
 
 .small_white {
     font-size: 12px;
-    color: #ECEFF1;
+    color: var(--font_small_text);
     font-style: italic;
 }
 
 .big_orange {
     font-size: 14px;
-    color: orange;
+    color: var(--font_big_text);
 }
 
 .day_count_div {
@@ -209,12 +208,12 @@ input[type="button"]:active {
 }
 
 .search_filter_div {
-    background: #666666;
+    background: var(--unit_background);
     box-shadow: 2px 3px 5px 0 rgba(0, 0, 0, 0.55);
     border-radius: 5px;
     font-size: 14px;
     /*color: #f5a208;*/
-    color: darkorange;
+    color: var(--font_search_text);
     text-shadow: 2px 2px 2px #444444;
     max-width: 700px;
     /*padding: 4px 12px 4px 12px;*/
@@ -232,7 +231,7 @@ input[type="button"]:active {
 }
 
 .state_div {
-    background: #777777;
+    background: var(--state_background);
     box-shadow: 2px 3px 5px 0 rgba(0, 0, 0, 0.55);
     border-radius: 5px;
     font-size: 14px;
