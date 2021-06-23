@@ -1,5 +1,7 @@
 
-const VERSION_NUMBER = 1.06;
+const VERSION_NUMBER = 1.07;
+
+
 
 function valueOfElement(id) {
     return document.getElementById(id).value
@@ -70,7 +72,7 @@ function addSerialDataRowToPage(arr) {
     if (arr.length === 0) insertNothing('row_table');
     else if (document.getElementById('row_table') != null) {
 
-        document.getElementById('main_logo').style.display = "none";
+        // document.getElementById('main_logo').style.display = "none";
 
         let unit;
         let data = '';
@@ -165,23 +167,3 @@ function addCollectionOfDocumentToDiv_new(arr, host) {
     }
 }
 
-
-// function to set a given theme/color-scheme
-function setTheme(themeName) {
-    localStorage.setItem('theme', themeName);
-    document.documentElement.className = themeName;
-}// function to toggle between light and dark theme
-function toggleTheme() {
-    if (localStorage.getItem('theme') === 'theme-dark'){
-        setTheme('theme-light');
-    } else {
-        setTheme('theme-dark');
-    }
-}// Immediately invoked function to set the theme on initial load
-(function () {
-    if (localStorage.getItem('theme') === 'theme-dark') {
-        setTheme('theme-dark');
-    } else {
-        setTheme('theme-light');
-    }
-})();
