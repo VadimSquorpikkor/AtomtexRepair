@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Atomtex Repair</title>
+
+    <script defer src="/__/firebase/8.5.0/firebase-app.js"></script>
+    <script defer src="/__/firebase/8.5.0/firebase-firestore.js"></script>
+    <script defer src="/__/firebase/init.js?useEmulator=true"></script>
+
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+    <script defer src="js/dictionary.js"></script>
+    <script defer src="js/app.js"></script>
+    <script defer src="js/firebaseHelper.js"></script>
+    <script defer src="js/firebase_low_level.js"></script>
+
+</head>
+
+<body class="body">
+
+<a id="output_a"></a>
+<!--<button id="switch" onclick="toggleTheme()">Switch</button>-->
+
+<img src="theme_switcher_light.png" class="theme_switcher" id="theme_switcher">
+<div class="main_div" id="main_div">
+
+
+    <input type="image" src="flags/en.jpg" id="flag_en" name="En" width="40" height="20"/>
+    <input type="image" src="flags/de.jpg" id="flag_de" name="De" width="40" height="20"/>
+    <input type="image" src="flags/fr.jpg" id="flag_fr" name="Fr" width="40" height="20"/>
+    <input type="image" src="flags/ru.jpg" id="flag_ru" name="Ru" width="40" height="20"/>
+    <input type="image" src="flags/it.jpg" id="flag_it" name="It" width="40" height="20"/>
+    <input type="image" src="flags/es.jpg" id="flag_es" name="Es" width="40" height="20"/>
+
+    <br><br><br><img src="atom_logo.png" class="for_logo" width="300">
+    <h1 id="main_h1">Группа Сервиса</h1>
+
+    <div class="search_filter_div">
+        <span class="label_filter" id="serial_number_text">Серийный номер:</span>
+        <input type="text" id="serial" style="width:150px; margin-bottom: 4px" placeholder="Серийный номер" value="22222"><br>
+        <input type="button" id="search_button" onclick="startSearchAllRepairOnly('serial')" style="width:100px" value="Найти">
+    </div>
+
+    <div class="main_div" id="row_table" style="box-shadow: none; padding-top: 0px"><div class="found_unit_item" onclick='getAllEventsByUnitIdSmall("r_1")'>    <div class="item_info_div">        <span class="big_orange">AT2503</span><br>        <span class="small_white">№ — 22222</span><br>        <span class="big_orange">Группа сервиса</span><br>        <span class="small_white">Расчет</span>    </div>    <div class="day_count_div">        <span class="small_white">Принят в ремонт:</span><br>        <span class="small_white">08.06.2021 09:33:04</span><br>        <span class="small_white">Дней в ремонте:</span><br>        <span class="big_orange">14</span>    </div>    <div id="state_r_1" class="state_host"><div class="state_div">    <div class="item_info_div">        <span class="big_orange">Группа сервиса</span><br>        <span class="small_white">Расчет</span>    </div>    <div class="date_div">        <span class="small_white">08.06.2021</span><br>        <span class="small_white">09:44:17</span>    </div></div><div class="state_div">    <div class="item_info_div">        <span class="big_orange">Градуировка</span><br>        <span class="small_white">ПСИ</span>    </div>    <div class="date_div">        <span class="small_white">08.06.2021</span><br>        <span class="small_white">09:43:10</span>    </div></div><div class="state_div">    <div class="item_info_div">        <span class="big_orange">Участок РИР</span><br>        <span class="small_white">Испытания</span>    </div>    <div class="date_div">        <span class="small_white">08.06.2021</span><br>        <span class="small_white">09:42:12</span>    </div></div><div class="state_div">    <div class="item_info_div">        <span class="big_orange">Сборочный участок</span><br>        <span class="small_white">Сборка</span>    </div>    <div class="date_div">        <span class="small_white">08.06.2021</span><br>        <span class="small_white">09:41:41</span>    </div></div><div class="state_div">    <div class="item_info_div">        <span class="big_orange">Сборочный участок</span><br>        <span class="small_white">Сборка</span>    </div>    <div class="date_div">        <span class="small_white">08.06.2021</span><br>        <span class="small_white">09:41:20</span>    </div></div><div class="state_div">    <div class="item_info_div">        <span class="big_orange">Участок РИР</span><br>        <span class="small_white">Диагностика</span>    </div>    <div class="date_div">        <span class="small_white">08.06.2021</span><br>        <span class="small_white">09:40:51</span>    </div></div><div class="state_div">    <div class="item_info_div">        <span class="big_orange">Градуировка</span><br>        <span class="small_white">Градуировка</span>    </div>    <div class="date_div">        <span class="small_white">08.06.2021</span><br>        <span class="small_white">09:39:04</span>    </div></div><div class="state_div">    <div class="item_info_div">        <span class="big_orange">Участок РИР</span><br>        <span class="small_white">Диагностика</span>    </div>    <div class="date_div">        <span class="small_white">08.06.2021</span><br>        <span class="small_white">09:37:59</span>    </div></div><div class="state_div">    <div class="item_info_div">        <span class="big_orange">Сборочный участок</span><br>        <span class="small_white">Разборка</span>    </div>    <div class="date_div">        <span class="small_white">08.06.2021</span><br>        <span class="small_white">09:36:13</span>    </div></div><div class="state_div">    <div class="item_info_div">        <span class="big_orange">Монтаж</span><br>        <span class="small_white">Монтаж</span>    </div>    <div class="date_div">        <span class="small_white">08.06.2021</span><br>        <span class="small_white">09:35:37</span>    </div></div><div class="state_div">    <div class="item_info_div">        <span class="big_orange">Участок РИР</span><br>        <span class="small_white">Диагностика</span>    </div>    <div class="date_div">        <span class="small_white">08.06.2021</span><br>        <span class="small_white">09:34:40</span>    </div></div><div class="state_div">    <div class="item_info_div">        <span class="big_orange">Группа сервиса</span><br>        <span class="small_white">Принят в ремонт</span>    </div>    <div class="date_div">        <span class="small_white">08.06.2021</span><br>        <span class="small_white">09:33:04</span>    </div></div></div></div></div>
+
+    <img id="main_logo" src="Atomtex%20Repair_files/logo_big_grayscale.png" style="margin: auto; display: none;" width="400px"><br>
+
+    <span id="version_text" class="version">Версия — 1.05</span>
+</div>
+
+
+
+
+</body></html>
