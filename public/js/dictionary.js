@@ -3,6 +3,7 @@ const NO_STATES_FOUND = "no_states_found"
 const SERIAL = "serial_number_prefix"
 const DAYS_UNDER_REPAIR = "days_under_repair"
 const ACCEPTED_TO_REPAIR = "accepted_for_repair"
+const REPAIRS_COMPLETED = "repairs_completed"
 
 const LANG_RUSSIAN = "ru";
 const LANG_ENGLISH = "en";
@@ -74,6 +75,7 @@ let dictionary = new Map();
  dictionary.set('version_text',         {en:'Version — ',         fr:'Version — ',             de:'Ausführung — ',                  it:'Versione — ',                 ru: 'Версия — ',          es:'Versión — '});
  dictionary.set('accepted_for_repair',  {en:'Accepted for repair', fr:'Accepté pour réparation', de:'Zur Reparatur angenommen',       it:'Accettato per la riparazione', ru: 'Принят в ремонт',     es:'Aceptado para reparación'});
  dictionary.set('Repair Service',       {en:'Repair Service',      fr:'Service de réparation',   de:'Reparaturdienst',                it:'Servizio di riparazione',      ru: 'Группа Сервиса',      es:'Servicio de reparación'});
+ dictionary.set('repairs_completed',    {en:'REPAIRS COMPLETED',   fr:'RÉPARATIONS TERMINÉES',   de:'REPARATUREN ABGESCHLOSSEN',      it:'RIPARAZIONI COMPLETATE',       ru: 'РЕМОНТ ЗАВЕРШЕН',     es:'REPARACIONES TERMINADAS'});
 
  dictionary.set('serial_number',        {en:'Serial number',       fr:'Numéro de série',         de:'Ordnungsnummer',                 it:'Numero di serie',              ru: 'Серийный номер',      es:'Número de serie'});
  dictionary.set('serial_number_text',   {en:'Serial number:',      fr:'Numéro de série:',        de:'Ordnungsnummer:',                it:'Numero di serie:',             ru: 'Серийный номер:',     es:'Número de serie:'});

@@ -17,7 +17,7 @@ const DESCENDING = "desc";
 
 /** Класс для устройства, или блока детектирования */
 class DUnit {
-    constructor(id, description, device_id, employee_id, inner_serial, location_id, serial, state_id, type_id, date) {
+    constructor(id, description, device_id, employee_id, inner_serial, location_id, serial, state_id, type_id, date, close_date) {
         this.id = id;
         this.description = description;
         this.device_id = device_id;
@@ -28,6 +28,7 @@ class DUnit {
         this.state_id = state_id;
         this.type_id = type_id;
         this.date = date;
+        this.close_date = close_date;
     }
 
     toString() {
@@ -40,13 +41,15 @@ class DUnit {
             this.serial + ', ' +
             this.state_id + ', ' +
             this.type_id + ', ' +
-            this.date;
+            this.date + ', ' +
+            this.close_date;
     }
 }
 
 /** Firestore data converter. Нужен для загрузки из БД объекта класса DUnit */
 let dUnitConverter = {
     toFirestore: function (dunit) {
+        console.log('CONVERTER - '+dunit.close_date);
         return {
             id: dunit.id,
             description: dunit.description,
@@ -57,12 +60,13 @@ let dUnitConverter = {
             serial: dunit.serial,
             state_id: dunit.state_id,
             type_id: dunit.type_id,
-            date: dunit.date
+            date: dunit.date,
+            close_date: dunit.close_date
         };
     },
     fromFirestore: function (snapshot, options) {
         const data = snapshot.data(options);
-        return new DUnit(data.id, data.description, data.device_id, data.employee_id, data.inner_serial, data.location_id, data.serial, data.state_id, data.type_id, data.date);
+        return new DUnit(data.id, data.description, data.device_id, data.employee_id, data.inner_serial, data.location_id, data.serial, data.state_id, data.type_id, data.date, data.close_date);
     }
 };
 

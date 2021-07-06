@@ -93,13 +93,26 @@ function addSerialDataRowToPage(arr) {
             let state = unit.state_id;
             let location = unit.location_id;
             let dayString = rightDayString(daysCount);
+            console.log('unit.close_date = '+unit.close_date);
+            let isClose = unit.close_date!==undefined;
 
             deviceName = getRightLanguageWord(deviceName);//getNameById(deviceName, deviceNameList, deviceIdList);
             state = getRightLanguageWord(state);//getNameById(state, stateNameList, stateIdList);
             location = getRightLanguageWord(location);//getNameById(location, locationNameList, locationIdList);
 
+            let isCloseStroke = '';
+            if (isClose) {
+                isCloseStroke =
+                '<div style="width: auto">'+
+                '    <span class="big_orange" style="width: auto; text-align: center">'+getRightLanguageWord(REPAIRS_COMPLETED)+'</span>'+
+                '<hr>'+
+                '</div>';
+
+            }
+
             data +=
             '<div class="found_unit_item" onclick=getAllEventsByUnitIdSmall("'+unit.id+'")>'+
+                isCloseStroke+
             '    <div class="item_info_div">'+
             '        <span class="big_orange">'+ deviceName +'</span><br>'+
             '        <span class="small_white">'+ getRightLanguageWord(SERIAL) + ' — ' + serial +'</span><br>'+
