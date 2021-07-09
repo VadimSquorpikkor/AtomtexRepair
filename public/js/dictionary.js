@@ -80,6 +80,14 @@ let dictionary = new Map();
  dictionary.set('serial_number',        {en:'Serial number',       fr:'Numéro de série',         de:'Ordnungsnummer',                 it:'Numero di serie',              ru: 'Серийный номер',      es:'Número de serie'});
  dictionary.set('serial_number_text',   {en:'Serial number:',      fr:'Numéro de série:',        de:'Ordnungsnummer:',                it:'Numero di serie:',             ru: 'Серийный номер:',     es:'Número de serie:'});
 
+ //имена устройств. Только 1 язык, так как всё равно для не русских языков название будет одинаковым. Для не русских будет возвращать id
+ dictionary.set('AT2503',       {ru: 'ДКГ-AT2503'});
+ dictionary.set('AT6130',       {ru: 'МКС-AT6130'});
+ dictionary.set('AT6130C',      {ru: 'МКС-AT6130C'});
+ dictionary.set('BDKG-01',      {ru: 'БДКГ-01'});
+ dictionary.set('BDKG-04',      {ru: 'БДКГ-04'});
+
+
 function getRightLanguageWord(id) {
     if (!dictionary.has(id)) return id;
     switch (language) {

@@ -3,7 +3,6 @@ const DBASE = firebase.firestore();
 
 //Новые const для новой БД:
 const TABLE_UNITS = "units";
-const UNIT_SERIAL = "serial";
 
 const TABLE_EVENTS = "events"; //в прошлом states
 const EVENT_DATE = "date";
@@ -108,26 +107,13 @@ let dEventConverter = {
 
 //**********************************************************************************************************************
 
+const REPAIR_TYPE = "repair_type";
+
 function startSearchAllRepairOnly(serial_id) {
     let serial = valueOfElement(serial_id);
     if (serial==="") insertNothing('row_table');
-    else getUnitListFromBD(serial);
+    else getUnitListByParam(ANY_VALUE, ANY_VALUE, ANY_VALUE, REPAIR_TYPE, ANY_VALUE, serial);
 }
-
-function getUnitListFromBD(serial) {
-
-    getUnitBySerial(DBASE, TABLE_UNITS, dUnitConverter, UNIT_SERIAL, serial, addSerialDataRowToPage);
-
-/*    getAllUnitsByParam(DBASE, TABLE_UNITS, dUnitConverter,
-        UNIT_DEVICE, ANY_VALUE,
-        UNIT_LOCATION, ANY_VALUE,
-        UNIT_EMPLOYEE, ANY_VALUE,
-        UNIT_TYPE, TYPE_REPAIR,
-        UNIT_STATE, ANY_VALUE,
-        UNIT_SERIAL, serial,
-        addSerialDataRowToPage);*/
-}
-
 
 /**Показывает/скрывает список всех событий для выбранного юнита*/
 function getAllEventsByUnitIdSmall(unit_id) {
@@ -138,13 +124,3 @@ function getAllEventsByUnitIdSmall(unit_id) {
     if (size === 0) getAllEventsByUnitId_new(DBASE, TABLE_EVENTS, EVENT_UNIT, unit_id, addCollectionOfDocumentToDiv_new, EVENT_DATE, DESCENDING, host);
     else document.getElementById(host).innerHTML = '';
 }
-
-/*
-function getLanguage(pageLang) {
-    switch (pageLang) {
-        case "ru":return LANG_RUSSIAN;
-        case "en":return LANG_ENGLISH;
-        case "zh":return LANG_CHINESE;
-        case "it":return LANG_ITALIAN;
-    }
-}*/

@@ -37,6 +37,17 @@ function getAllEventsByUnitId_new(database, table, param, value, func, orderBy, 
     });
 }
 
+const UNIT_DEVICE = "device_id";
+const UNIT_EMPLOYEE = "employee_id";
+const UNIT_LOCATION = "location_id";
+const UNIT_SERIAL = "serial";
+const UNIT_STATE = "state_id";
+const UNIT_TYPE = "type_id";
+
+/**Обертка для getAllUnitsByParam*/
+function getUnitListByParam(deviceName, location, employee, type, state, serial) {
+    getAllUnitsByParam(DBASE, TABLE_UNITS, dUnitConverter, UNIT_DEVICE, deviceName, UNIT_LOCATION, location, UNIT_EMPLOYEE, employee, UNIT_TYPE, type, UNIT_STATE, state, UNIT_SERIAL, serial, addSerialDataRowToPage);
+}
 //todo кроме ANY_VALUE добавить ещё null и ""
 /**Получить все объекты из коллекции, совпадающие по параметрам. Если значение параметра равно ANY_VALUE,
  * то этот параметр будет проигнорирован при поиске*/
