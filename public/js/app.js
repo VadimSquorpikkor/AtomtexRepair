@@ -1,6 +1,5 @@
 
-const VERSION_NUMBER = 1.09;
-
+const VERSION_NUMBER = '1.10';
 
 
 function valueOfElement(id) {
@@ -25,16 +24,16 @@ const flag_ru = document.getElementById('flag_ru');
 const flag_it = document.getElementById('flag_it');
 const flag_es = document.getElementById('flag_es');
 
-const serial_doted_text = document.getElementById('serial_number_text');
+const trackid_doted_text = document.getElementById('trackid_text');
 const version_text = document.getElementById('version_text');
-const serial_input = document.getElementById('serial');
+const trackid_input = document.getElementById('trackid');
 const find_num_button = document.getElementById('search_button');
 const main_h1 = document.getElementById('main_h1');
 
-serial_doted_text.innerText = getRightLanguageWord('serial_number_text');
+trackid_doted_text.innerText = getRightLanguageWord('trackid_doted');
 version_text.innerText = getRightLanguageWord('version_text')+VERSION_NUMBER;
 main_h1.innerText = getRightLanguageWord('Repair Service');
-serial_input.placeholder = getRightLanguageWord('serial_number');
+trackid_input.placeholder = getRightLanguageWord('trackid');
 find_num_button.value = getRightLanguageWord('find_number');
 
 function saveLang(lang) {

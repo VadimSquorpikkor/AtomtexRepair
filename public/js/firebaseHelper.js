@@ -16,7 +16,7 @@ const DESCENDING = "desc";
 
 /** Класс для устройства, или блока детектирования */
 class DUnit {
-    constructor(id, description, device_id, employee_id, inner_serial, location_id, serial, state_id, type_id, date, close_date) {
+    constructor(id, description, device_id, employee_id, inner_serial, location_id, serial, state_id, type_id, date, close_date, trackid) {
         this.id = id;
         this.description = description;
         this.device_id = device_id;
@@ -28,6 +28,7 @@ class DUnit {
         this.type_id = type_id;
         this.date = date;
         this.close_date = close_date;
+        this.trackid = trackid;
     }
 
     toString() {
@@ -41,7 +42,8 @@ class DUnit {
             this.state_id + ', ' +
             this.type_id + ', ' +
             this.date + ', ' +
-            this.close_date;
+            this.close_date + ', ' +
+            this.trackid;
     }
 }
 
@@ -60,12 +62,13 @@ let dUnitConverter = {
             state_id: dunit.state_id,
             type_id: dunit.type_id,
             date: dunit.date,
-            close_date: dunit.close_date
+            close_date: dunit.close_date,
+            trackid: dunit.trackid
         };
     },
     fromFirestore: function (snapshot, options) {
         const data = snapshot.data(options);
-        return new DUnit(data.id, data.description, data.device_id, data.employee_id, data.inner_serial, data.location_id, data.serial, data.state_id, data.type_id, data.date, data.close_date);
+        return new DUnit(data.id, data.description, data.device_id, data.employee_id, data.inner_serial, data.location_id, data.serial, data.state_id, data.type_id, data.date, data.close_date, data.trackid);
     }
 };
 
@@ -109,10 +112,10 @@ let dEventConverter = {
 
 const REPAIR_TYPE = "repair_type";
 
-function startSearchAllRepairOnly(serial_id) {
-    let serial = valueOfElement(serial_id);
-    if (serial==="") insertNothing('row_table');
-    else getUnitListByParam(ANY_VALUE, ANY_VALUE, ANY_VALUE, REPAIR_TYPE, ANY_VALUE, serial);
+function startSearchAllRepairOnly(trackid_id) {
+    let trackid = valueOfElement(trackid_id);
+    if (trackid==="") insertNothing('row_table');
+    else getUnitListByParam(ANY_VALUE, ANY_VALUE, ANY_VALUE, REPAIR_TYPE, ANY_VALUE, ANY_VALUE, trackid);
 }
 
 /**Показывает/скрывает список всех событий для выбранного юнита*/

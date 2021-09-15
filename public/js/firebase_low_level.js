@@ -43,10 +43,11 @@ const UNIT_LOCATION = "location_id";
 const UNIT_SERIAL = "serial";
 const UNIT_STATE = "state_id";
 const UNIT_TYPE = "type_id";
+const UNIT_TRACKID = "trackid";
 
 /**Обертка для getAllUnitsByParam*/
-function getUnitListByParam(deviceName, location, employee, type, state, serial) {
-    getAllUnitsByParam(DBASE, TABLE_UNITS, dUnitConverter, UNIT_DEVICE, deviceName, UNIT_LOCATION, location, UNIT_EMPLOYEE, employee, UNIT_TYPE, type, UNIT_STATE, state, UNIT_SERIAL, serial, addSerialDataRowToPage);
+function getUnitListByParam(deviceName, location, employee, type, state, serial, trackid) {
+    getAllUnitsByParam(DBASE, TABLE_UNITS, dUnitConverter, UNIT_DEVICE, deviceName, UNIT_LOCATION, location, UNIT_EMPLOYEE, employee, UNIT_TYPE, type, UNIT_STATE, state, UNIT_SERIAL, serial, UNIT_TRACKID, trackid, addSerialDataRowToPage);
 }
 //todo кроме ANY_VALUE добавить ещё null и ""
 /**Получить все объекты из коллекции, совпадающие по параметрам. Если значение параметра равно ANY_VALUE,
@@ -58,6 +59,7 @@ function getAllUnitsByParam(database, table, converter,
                             param_4, value_4,
                             param_5, value_5,
                             param_6, value_6,
+                            param_7, value_7,
                             func) {
     let query = database.collection(table).withConverter(converter);
     if (value_1 !== ANY_VALUE) query = query.where(param_1, "==", value_1)
@@ -66,6 +68,7 @@ function getAllUnitsByParam(database, table, converter,
     if (value_4 !== ANY_VALUE) query = query.where(param_4, "==", value_4)
     if (value_5 !== ANY_VALUE) query = query.where(param_5, "==", value_5)
     if (value_6 !== ANY_VALUE) query = query.where(param_6, "==", value_6)
+    if (value_7 !== ANY_VALUE) query = query.where(param_7, "==", value_7)
 
     let arr = [];
     query.get().then((querySnapshot) => {

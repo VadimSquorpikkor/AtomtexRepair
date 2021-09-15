@@ -38,6 +38,9 @@ function getSavedLanguage() {
 let language = getSavedLanguage();
 
 let dictionary = new Map();
+ dictionary.set('adj_r_poverka',        {en:'Verification',        fr:'Vérification',            de:'Überprüfung',                    it:'Verifica',                     ru: 'Поверка',             es:'Verificación'});
+ dictionary.set('adj_s_poverka',        {en:'Verification',        fr:'Vérification',            de:'Überprüfung',                    it:'Verifica',                     ru: 'Поверка',             es:'Verificación'});
+ dictionary.set('adj_r_soglasovanie',   {en:'Agreement',           fr:'Accord',                  de:'Zustimmung',                     it:'Accordo',                      ru: 'Согласование',        es:'Convenio'});
  dictionary.set('adj_r_diagnostica',    {en:'Diagnostics',         fr:'Diagnostique',            de:'Diagnose',                       it:'Diagnostica',                  ru: 'Диагностика',         es:'Diagnósticos'});
  dictionary.set('adj_r_ispytania',      {en:'Testing',             fr:'Essai',                   de:'Testen',                         it:'Test',                         ru: 'Испытания',           es:'Pruebas'});
  dictionary.set('adj_r_utochnenie',     {en:'Clarification',       fr:'Clarification',           de:'Klärung',                        it:'Una precisazione',             ru: 'Уточнение',           es:'Aclaración'});
@@ -49,17 +52,11 @@ let dictionary = new Map();
  dictionary.set('ass_a_sborka',         {en:'Assembly',            fr:'Assemblée',               de:'Versammlung',                    it:'Assemblaggio',                 ru: 'Сборка',              es:'Montaje'});
  dictionary.set('ass_a_zamena',         {en:'Replacement',         fr:'Remplacement',            de:'Ersatz',                         it:'Sostituzione',                 ru: 'Замена',              es:'Reemplazo'});
  dictionary.set('assembly',             {en:'Assembly area',       fr:'Zone d\'assemblage',      de:'Montagebereich',                 it:'Assemblaggio',                 ru: 'Сборочный участок',   es:'Area de ensamblado'});
- dictionary.set('AT2503',               {en:'AT2503',              fr:'AT2503',                  de:'AT2503',                         it:'AT2503',                       ru: 'AT2503',              es:''});
- dictionary.set('AT6130',               {en:'AT6130',              fr:'AT6130',                  de:'AT6130',                         it:'AT6130',                       ru: 'МКС-AT6130',          es:'AT2503'});
- dictionary.set('AT6130C',              {en:'AT6130C',             fr:'AT6130C',                 de:'AT6130C',                        it:'AT6130C',                      ru: 'МКС-AT6130С',         es:'AT6130C'});
- dictionary.set('BDKG01',               {en:'BDKG-01',             fr:'BDKG-01',                 de:'BDKG-01',                        it:'BDKG-01',                      ru: 'БДКГ-01',             es:'BDKG-01'});
- dictionary.set('BDKG04',               {en:'BDKG-04',             fr:'BDKG-04',                 de:'BDKG-04',                        it:'BDKG-04',                      ru: 'БДКГ-04',             es:'BDKG-04'});
  dictionary.set('gra_a_graduirovka',    {en:'Graduation',          fr:'Graduation',              de:'Skala',                          it:'Graduazione',                  ru: 'Градуировка',         es:'Graduación'});
  dictionary.set('gra_a_psi',            {en:'Testing',             fr:'Testing',                 de:'Testen',                         it:'Test',                         ru: 'ПСИ',                 es:'Pruebas'});
  dictionary.set('graduation',           {en:'Graduation',          fr:'Graduation',              de:'Rahmen',                         it:'Configurazione',               ru: 'Градуировка',         es:'Graduación'});
  dictionary.set('rep_r_prinyat',        {en:'Accepted for repair', fr:'Accepté pour réparation', de:'Zur Reparatur angenommen',       it:'Accettato per la riparazione', ru: 'Принят в ремонт',     es:'Aceptado para reparación'});
  dictionary.set('rep_r_raschet',        {en:'Calculation',         fr:'Calcul',                  de:'Berechnung',                     it:'Calcolo',                      ru: 'Расчет',              es:'Cálculo'});
- dictionary.set('rep_r_soglasovanie',   {en:'Agreement',           fr:'Accord',                  de:'Zustimmung',                     it:'Accordo',                      ru: 'Согласование',        es:'Convenio'});
  dictionary.set('repair_area',          {en:'Repair Service',      fr:'Service de réparation',   de:'Reparaturdienst',                it:'Riparazione',                  ru: 'Группа сервиса',      es:'Servicio de reparación'});
  dictionary.set('serial_number_prefix', {en:'S/N',                 fr:'N',                       de:'ON',                             it:'N',                            ru: '№',                  es:'N'});
  dictionary.set('sol_a_montag',         {en:'Soldering',           fr:'Soudure',                 de:'Löten',                          it:'Saldatura',                    ru: 'Монтаж',              es:'Soldadura'});
@@ -68,6 +65,8 @@ let dictionary = new Map();
  dictionary.set('rep_r_otpravleno',     {en:'Shipped',             fr:'Expédié',                 de:'Versand',                        it:'Spedito',                      ru: 'Отправлено',          es:'Enviado'});
  dictionary.set('rep_r_ozidanie',       {en:'Waiting for payment', fr:'En attente de paiement',  de:'Warten auf Zahlung',             it:'In attesa del pagamento',      ru: 'Ожидание оплаты',     es:'A la espera del pago'});
 
+ dictionary.set('trackid',              {en:'Track ID'});
+ dictionary.set('trackid_doted',        {en:'Track ID:'});
  dictionary.set('find_number',          {en:'Search',              fr:'Rechercher',              de:'Suche',                          it:'Ricerca',                      ru: 'Найти',               es:'Buscar'});
  dictionary.set('nothing_found',        {en:'Nothing found',       fr:'Rien n\'a été trouvé',    de:'Nichts gefunden',                it:'Non abbiamo trovato nulla',    ru: 'Ничего не найдено',   es:'Nada Encontrado'});
  dictionary.set('no_states_found',      {en:'No events found',     fr:'Aucun événement trouvé',  de:'Keine Veranstaltungen gefunden', it:'Nessun evento trovato',        ru: 'Событий не найдено',  es:'No se encontraron eventos'});
@@ -87,8 +86,71 @@ let dictionary = new Map();
  dictionary.set('BDKG-01',      {ru: 'БДКГ-01'});
  dictionary.set('BDKG-04',      {ru: 'БДКГ-04'});
 
+ dictionary.set('AT1103M',     {ru: 'ДКР-AT1103M'});
+ dictionary.set('AT1117M',     {ru: 'MKC-AT1117M'});
+ dictionary.set('AT1120',     {ru: 'MKC-AT1120'});
+ dictionary.set('AT1120A',     {ru: 'MKC-AT1120A'});
+ dictionary.set('AT1120M',     {ru: 'MKC-AT1120M'});
+ dictionary.set('AT1121',     {ru: 'ДКС-AT1121'});
+ dictionary.set('AT1123',     {ru: 'ДКС-AT1123'});
+ dictionary.set('AT1125',     {ru: 'MKC-AT1125'});
+ dictionary.set('AT1125A',     {ru: 'MKC-AT1125A'});
 
+dictionary.set('BDKG-02',      {ru: 'БДКГ-02'});
+dictionary.set('BDKG-03',      {ru: 'БДКГ-03'});
+dictionary.set('BDKG-04',      {ru: 'БДКГ-04'});
+dictionary.set('BDKG-05',      {ru: 'БДКГ-05'});
+dictionary.set('BDKG-05C',      {ru: 'БДКГ-05C'});
+dictionary.set('BDKG-05M',      {ru: 'БДКГ-05M'});
+dictionary.set('BDKG-07',      {ru: 'БДКГ-07'});
+dictionary.set('BDKG-10',      {ru: 'БДКГ-10'});
+dictionary.set('BDKG-104',      {ru: 'БДКГ-104'});
+dictionary.set('BDKG-11',      {ru: 'БДКГ-11'});
+dictionary.set('BDKG-111',      {ru: 'БДКГ-111'});
+dictionary.set('BDKG-11C',      {ru: 'БДКГ-11C'});
+dictionary.set('BDKG-11M',      {ru: 'БДКГ-11M'});
+dictionary.set('BDKG-17',      {ru: 'БДКГ-17'});
+dictionary.set('BDKG-19',      {ru: 'БДКГ-19'});
+dictionary.set('BDKG-19M',      {ru: 'БДКГ-19M'});
+dictionary.set('BDKG-201M',      {ru: 'БДКГ-201M'});
+dictionary.set('BDKG-203M',      {ru: 'БДКГ-203M'});
+dictionary.set('BDKG-204',      {ru: 'БДКГ-204'});
+dictionary.set('BDKG-205M',      {ru: 'БДКГ-205M'});
+dictionary.set('BDKG-211M',      {ru: 'БДКГ-211M'});
+dictionary.set('BDKG-219M',      {ru: 'БДКГ-219M'});
+dictionary.set('BDKG-22',      {ru: 'БДКГ-22'});
+dictionary.set('BDKG-224',      {ru: 'БДКГ-224'});
+dictionary.set('BDKG-23',      {ru: 'БДКГ-23'});
+dictionary.set('BDKG-230',      {ru: 'БДКГ-230'});
+dictionary.set('BDKG-23_1',     {en:'BDKG-23/1', ru: 'БДКГ-23/1'});
+
+
+/**Если в словаре нет id, возвращает id
+ * Если в словаре нет нужного языка, возвращает вариант на английском
+ * Если в словаре не найдено слово на нужном языке, возвращает вариант на английском
+ * Если и на английском такого нет, возвращает id*/
 function getRightLanguageWord(id) {
+    if (!dictionary.has(id)) return id;
+
+    let s;
+
+    switch (language) {
+        case LANG_RUSSIAN: s=dictionary.get(id).ru; break
+        case LANG_ENGLISH: s=dictionary.get(id).en; break
+        case LANG_FRENCH:  s=dictionary.get(id).fr; break
+        case LANG_GERMANY: s=dictionary.get(id).de; break
+        case LANG_ITALIAN: s=dictionary.get(id).it; break
+        case LANG_SPANISH: s=dictionary.get(id).es; break
+        default: s=dictionary.get(id).en;
+    }
+
+    if (typeof s==='undefined') s=dictionary.get(id).en;
+    if (typeof s==='undefined') s=id;
+    return s;
+}
+
+
+function getRightLanguageWord_old(id) {
     if (!dictionary.has(id)) return id;
     switch (language) {
         case LANG_RUSSIAN: return dictionary.get(id).ru;
@@ -97,7 +159,7 @@ function getRightLanguageWord(id) {
         case LANG_GERMANY: return dictionary.get(id).de;
         case LANG_ITALIAN: return dictionary.get(id).it;
         case LANG_SPANISH: return dictionary.get(id).es;
-        default: return dictionary.get(id).en;
+        default: return (typeof dictionary.get(id).en)==='undefined'?dictionary.get(id):dictionary.get(id).en;
     }
 }
 
